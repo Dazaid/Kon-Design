@@ -1,0 +1,9 @@
+
+
+npm install @mui/material @emotion/react @emotion/styled
+
+https://tailwindcss.com/docs/installation
+npm install -D tailwindcss
+npx tailwindcss init
+
+
