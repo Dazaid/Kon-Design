@@ -25,7 +25,7 @@ const Brand = () => {
     <>
       <Box className="flex flex-col justify-center items-center bg-[#ffd301] w-[100vw] py-16">
         <Box className="flex flex-row gap-16">
-          <h3 className="text-5xl font-bold">BRANDING</h3>
+          <h3 className="text-7xl font-bold">BRANDING</h3>
           <p>
             Confira todos os nossos projetos de <br />
             identidade visual, redes sociais e edição de <br />

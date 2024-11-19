@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
+import { useScroll } from "../ScrollContext";
 import Carousel from './Carousel';
 
 const GraciosaConfeitaria = [
@@ -47,9 +48,12 @@ const BarberShop = [
 ]
 
 const Portfolio = () => {
+
+  const { servicosRef, portfolioRef } = useScroll();
+
   return (
     <>
-      <Box className="flex justify-center items-center bg-[#0b0009] w-[100vw] py-16">
+      <Box ref={portfolioRef} className="flex justify-center items-center bg-[#0b0009] w-[100vw] py-16">
         <Box className="flex flex-col gap-16 justify-center items-center w-[100vw]">
           <Box className="flex flex-row gap-16">
             <Carousel images={GraciosaConfeitaria} labelup={"Graciosa Confeitaria"} labeldown={"Montra"} />
@@ -90,7 +94,7 @@ const Portfolio = () => {
       </Box>
 
 
-      <Box className="flex flex-row gap-20 justify-center items-center pb-6 h-[22vh] w-[100vw] bg-[#0b0009] text-white">
+      <Box ref={servicosRef} className="flex flex-row gap-20 justify-center items-center pb-6 h-[22vh] w-[100vw] bg-[#0b0009] text-white">
         <Box className="flex flex-col justify-center items-start">
           <TrendingFlatIcon sx={{ fontSize: 50, color: '#ffc000' }} className='relative top-5 right-2' />
           <h2 className='text-3xl'>

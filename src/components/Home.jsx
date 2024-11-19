@@ -1,13 +1,16 @@
 import { Box } from '@mui/material';
-
+import { useScroll } from "../ScrollContext";
 const Home = () => {
+
+  const { homeRef, servicosRef, portfolioRef, contactRef, scrollToSection } = useScroll()
+
   return (
     <>
-      <Box className="flex justify-center items-center bg-[url('/assets/HomeBkg.png')] bg-cover h-[100vh] w-[100vw]">
+      <Box ref={homeRef} className="flex justify-center items-center bg-[url('assets/HomeBkg.png')] bg-cover h-[100vh] w-[100vw]">
 
         <Box className="flex flex-row text-white h-[51vh] gap-24">
           <Box className="flex flex-col gap-24">
-            <img className='w-20' src="/assets/Logo.webp" alt="logo" />
+            <img className='w-20' src="assets/Logo.webp" alt="logo" />
             <Box>
               <h2 className='text-3xl'>
                 <strong>Design</strong>  para <br />
@@ -25,22 +28,17 @@ const Home = () => {
                 </button>
               </a>
 
-              <a target="_blank" href="https://kondesignpt.com/orcamento">
-                <button
-                  class="font-bold bg-gradient-to-r from-[#4806e5] from-10% via-[#281156] via-50% to-[#18160e] to-90% text-white rounded-lg py-2 px-14 hover:scale-105 transition-all duration-300">
-                  Cotação online
-                </button>
-              </a>
+
             </Box>
           </Box>
           <Box className="h-[100%] flex flex-col justify-center items-center">
-            <img className="w-96" src="/assets/PhotoPrinter.webp" alt="Photo Printer" />
+            <img className="w-96" src="assets/PhotoPrinter.webp" alt="Photo Printer" />
           </Box>
           <Box className="h-[100%] flex flex-col justify-center items-end gap-5 text-xl">
-          <a href="https://kondesignpt.com/"><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Home</p></a>
-            <a href="https://kondesignpt.com/#sobre"><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Sobre Nós</p></a>
-            <a href="https://kondesignpt.com/#servicos"><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Serviços</p></a>
-            <a href="https://kondesignpt.com/#portifolio"><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Portifolio</p></a>
+          <button onClick={() => scrollToSection(homeRef)}><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Home</p></button>
+          <button onClick={() => scrollToSection(contactRef)}><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Sobre Nós</p></button>
+          <button onClick={() => scrollToSection(servicosRef)}><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Serviços</p></button>
+          <button onClick={() => scrollToSection(portfolioRef)}><p class="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Portifolio</p></button>
           </Box>
         </Box>
 
