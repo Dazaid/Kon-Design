@@ -61,7 +61,15 @@ const MFootter = () => {
           </Box>
           <p className='text-center'> 2024 © KonDesign. Todos os direitos reservados</p>
         </Box>
-        <Box className="bg-gradient-to-r from-[#6d2f95] from-10% via-[#090310] via-50% to-[#fbba07] to-90% w-[100vw] h-[5vh] mt-2"></Box>
+        <Box className="bg-gradient-to-r from-[#6d2f95] from-10% via-[#090310] via-50% to-[#fbba07] to-90% w-[100vw] h-[5vh] mt-2 flex flex-row justify-center items-center">
+          <p className="text-sm flex flex-row justify-center items-center">
+            Powered&nbsp;by&nbsp;
+            <a target='_blank' className='flex flex-row justify-center items-center font-semibold' aria-label='Dazai' href="https://linktr.ee/DazaiDazai">
+              Dazai&nbsp;&nbsp;
+              <img className="w-6 h-6 bg-white rounded-[50%]" src="assets/DzkVector.svg" alt="Dazai Logo" />
+            </a>
+          </p>
+        </Box>
       </footer>
     </>
   );

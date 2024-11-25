@@ -7,19 +7,19 @@ const Home = () => {
   return (
     <>
       <Box ref={homeRef} className="flex justify-center items-center bg-cover h-[100vh] w-[100vw]">
-      <img className='absolute w-[98vw] h-[100vh]  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
+      <img className='absolute w-[96vw] h-[100vh]  object-cover z-[-1]' src="/assets/HomeBkg.png" title='background design' alt="background design" />
 
         <Box className="flex flex-row text-white h-[51vh] gap-24">
           <Box className="flex flex-col gap-24">
             <img className='w-20' src="assets/Logo.webp" alt="logo" />
             <Box>
-              <h2 className='text-3xl'>
+              <h1 className='text-3xl'>
                 <strong>Design</strong>  para <br />
                 empresas que <br />
                 <b> fazem a diferença!</b>
-              </h2>
+              </h1>
               <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[14.5vw] h-[0.65vh] mt-2"></Box>
-              <h1><strong className='text-[#a700ff] text-xl'>Branding, Web & Print.</strong></h1>
+              <h2><strong className='text-[#a700ff] text-xl'>Branding, Web & Print.</strong></h2>
             </Box>
             <Box className="flex flex-col gap-4">
               <a target="_blank" href="https://wa.me/351913916397">
@@ -42,7 +42,6 @@ const Home = () => {
           <button onClick={() => scrollToSection(portfolioRef)}><p className="hover:text-[#ffbb00] hover:cursor-pointer transition-all duration-100">Portifolio</p></button>
           </Box>
         </Box>
-
       </Box>
     </>
   );

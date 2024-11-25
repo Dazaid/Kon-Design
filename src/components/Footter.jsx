@@ -8,7 +8,7 @@ const Footter = () => {
         <Box className="bg-black py-6 w-[100vw] flex flex-col gap-6 justify-center items-center ">
           <img src="assets/Logo-KonDesign.webp" alt="Logo Footer" />
           <Box className="flex flex-row gap-6 text-2xl">
-          <a
+            <a
               href="#home"
               onClick={(e) => {
                 e.preventDefault(); // Evita el comportamiento predeterminado de navegación
@@ -22,7 +22,7 @@ const Footter = () => {
             <a
               href="#contact"
               onClick={(e) => {
-                e.preventDefault(); 
+                e.preventDefault();
                 scrollToSection(contactRef);
                 toggleMenu();
               }}
@@ -55,7 +55,15 @@ const Footter = () => {
           </Box>
           <> 2024 © KonDesign. Todos os direitos reservados</>
         </Box>
-        <Box className="bg-gradient-to-r from-[#6d2f95] from-10% via-[#090310] via-50% to-[#fbba07] to-90% w-[100vw] h-[5vh] mt-2"></Box>
+        <Box className="bg-gradient-to-r from-[#6d2f95] from-10% via-[#090310] via-50% to-[#fbba07] to-90% w-[100vw] h-[5vh] mt-2 flex flex-row justify-center items-center">
+          <h6 className="text-sm flex flex-row justify-center items-center">
+            Powered&nbsp;by&nbsp;
+            <a target='_blank' className='flex flex-row justify-center items-center font-semibold hover:text-[#E50914] transition-all duration-300' aria-label='Dazai' href="https://linktr.ee/DazaiDazai">
+              Dazai&nbsp;&nbsp;
+              <img className="w-6 h-6 bg-white rounded-[50%] hover:rotate-[16deg] transition-all duration-300" src="assets/DzkVector.svg" alt="Dazai Logo" />
+            </a>
+          </h6>
+        </Box>
       </footer>
     </>
   );

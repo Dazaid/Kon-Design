@@ -121,10 +121,8 @@ const MPortfolio = () => {
 
         <Box className="flex flex-col justify-center items-start">
           <TrendingFlatIcon aria-label="TrendingFlatIcon3" sx={{ fontSize: 50, color: '#7030a0' }} className='relative top-5 right-2' />
-          <h2 className='text-4xl'>
-            <b>
-              WEB DESIGN
-            </b>
+          <h2 className='text-4xl font-bold'>
+              WEB <strong>DESIGN</strong> 
           </h2>
           <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[14.5rem] h-[0.65vh] mt-2"></Box>
           <h3 className='text-xl'>

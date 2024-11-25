@@ -68,7 +68,7 @@ const About = () => {
           />
           <h3 className="text-4xl font-bold">Kennedy Guerra</h3>
           <Box className=" mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-64 h-[0.65vh] mt-2"></Box>
-          <p className="text-2xl font-bold">Sales manager</p>
+          <h4 className="text-2xl font-bold">Sales manager</h4>
           <p className="text-lg">comercial@kondesignpt.com</p>
         </Box>
 
@@ -80,7 +80,7 @@ const About = () => {
           />
           <h3 className="text-4xl font-bold">Mayckson Moura</h3>
           <Box className=" mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-64 h-[0.65vh] mt-2"></Box>
-          <p className="text-2xl font-bold">Graphic Design</p>
+          <h3 className="text-2xl font-bold">Graphic Design</h3>
           <p className="text-lg">creative@kondesignpt.com</p>
         </Box>
 
@@ -92,7 +92,7 @@ const About = () => {
           />
           <h3 className="text-4xl font-bold">Karina Rinaldi</h3>
           <Box className=" mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-64 h-[0.65vh] mt-2"></Box>
-          <p className="text-2xl font-bold">Photography</p>
+          <h4 className="text-2xl font-bold">Photography</h4>
           <p className="text-lg">creative@kondesignpt.com</p>
         </Box>
       </Box>
