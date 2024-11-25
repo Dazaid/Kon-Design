@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { Box, IconButton, CircularProgress } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 
 // Función para intentar cargar la imagen con reintentos
 const loadImageWithRetry = (src, retries = 3, delay = 1000) => {
@@ -37,10 +36,6 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
     arrows: false,
   };
 
-  // Alternar modo de pantalla completa
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
 
   // Cargar todas las imágenes antes de habilitar el carrusel
   useEffect(() => {
@@ -67,17 +62,10 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
 
   return (
     <>
-      <Box>
-        <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50" : "relative"} flex items-center justify-center`}>
-          <Box className="w-full max-w-4xl">
-            {isFullscreen && (
-              <IconButton
-                className="absolute top-4 right-4 text-white bg-gray-700 hover:bg-gray-600"
-                onClick={toggleFullscreen}
-              >
-                <CloseIcon />
-              </IconButton>
-            )}
+      <Box className="w-[100%]">
+        <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50 w-[100vw] h-[100vh]" : "relative bg-transparent"} flex items-center bg-transparent w-[100%] justify-center transform transition duration-300 ease-in-out`}>
+          <Box className="w-[100%] max-w-xl">
+
 
             {/* Mostrar un loader mientras las imágenes están cargando */}
             {isLoading ? (
@@ -85,7 +73,7 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
                 <CircularProgress color="primary" /> {/* Indicador de carga */}
               </Box>
             ) : (
-              <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50" : "relative"} flex items-center justify-center`}>
+              <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50 w-[100vw] h-[100vh] scale-[1.7]" : "relative bg-transparent"} flex items-center justify-center transform transition duration-300 ease-in-out`}>
                 <Box className="w-full max-w-[400px] aspect-square">
                   <Slider {...settings}>
                     {images.map((image, index) => (
@@ -95,7 +83,6 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
                             src={loadedImages.includes(image) ? image : "/fallback-image.jpg"} // Usar imagen de fallback si falló
                             alt={`Slide ${index + 1}`}
                             className={`rounded-lg object-cover w-full h-full`}
-                            onClick={toggleFullscreen}
                           />
                         </Box>
                       </Box>

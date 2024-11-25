@@ -34,7 +34,8 @@ const Web = () => {
           no que for preciso
           </p>
         </Box>
-        <Box className="flex flex-row gap-16 scale-[0.65]">
+        <Box className="flex flex-row justify-center items-center gap-10 mt-10 w-[17rem]">
+
           <Carousel images={JMC} />
           <Carousel images={InAleasha} />
           <Carousel images={Magik} />

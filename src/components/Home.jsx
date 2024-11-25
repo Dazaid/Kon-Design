@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Box ref={homeRef} className="flex justify-center items-center bg-cover h-[100vh] w-[100vw]">
-      <img className='absolute w-[100vw] h-[100vh]  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
+      <img className='absolute w-[98vw] h-[100vh]  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
 
         <Box className="flex flex-row text-white h-[51vh] gap-24">
           <Box className="flex flex-col gap-24">

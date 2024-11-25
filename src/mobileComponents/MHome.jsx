@@ -17,7 +17,7 @@ const MHome = () => {
   return (
     <>
       <Box ref={homeRef} className="flex justify-center items-center bg-cover h-[91.5vh] w-[100vw]">
-        <img className='absolute w-[100vw] h-[100vh]  opacity-80  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
+        <img className='absolute w-[98vw] h-[100vh]  opacity-80  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
         <Box className="absolute top-4 left-0">
           {/* Botón para abrir/cerrar el menú */}
           <a

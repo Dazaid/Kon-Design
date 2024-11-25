@@ -33,7 +33,8 @@ const Brand = () => {
             no que for preciso!
           </p>
         </Box>
-        <Box className="flex flex-row gap-16 scale-[0.65]">
+        <Box className="flex flex-row justify-center items-center mt-10 gap-10 w-[17rem]">
+
           <Carousel images={Fusion} />
           <Carousel images={BellaJardin} />
           <Carousel images={JMC} />

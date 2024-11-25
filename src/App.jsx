@@ -2,6 +2,7 @@ import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, HashRouter } from "react-router-dom"
 import { Box } from "@mui/material";
 import { ScrollProvider } from "./ScrollContext";
 
@@ -46,38 +47,87 @@ function App() {
 
   return (
     <ScrollProvider>
-      <Box className="overflow-x-hidden">
-        {isMobile ? (
-          //  móvil
-          <>
-            <MHome />
-            <MFeedback />
-            <MPortfolio />
-            <MBrand />
-            <MPrint />
-            <MWeb />
-            <MClientes />
-            <MAbout />
-            <MContactAndPrefooter />
-            <MFootter />
-          </>
-        ) : (
-          // pc
-          <>
-            <Home />
-            <Feedback />
-            <Portfolio />
-            <Brand />
-            <Print />
-            <Web />
-            <Clientes />
-            <About />
-            <ContactAndPrefooter />
-            <Footter />
-          </>
-        )}
-      </Box>
-    </ScrollProvider>
+      <HashRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+
+              <Box className="overflow-x-hidden">
+                {isMobile ? (
+                  //  móvil
+                  <>
+                    <MHome />
+                    <MFeedback />
+                    <MPortfolio />
+                    <MBrand />
+                    <MPrint />
+                    <MWeb />
+                    <MClientes />
+                    <MAbout />
+                    <MContactAndPrefooter />
+                    <MFootter />
+                  </>
+                ) : (
+                  // pc
+                  <>
+                    <Home />
+                    <Feedback />
+                    <Portfolio />
+                    <Brand />
+                    <Print />
+                    <Web />
+                    <Clientes />
+                    <About />
+                    <ContactAndPrefooter />
+                    <Footter />
+                  </>
+                )}
+              </Box>
+
+            }
+          />
+
+          {/* Rutas principales */}
+          <Route
+            path="/home"
+            element={isMobile ? <MHome /> : <Home />}
+          />
+          <Route
+            path="/feedback"
+            element={isMobile ? <MFeedback /> : <Feedback />}
+          />
+          <Route
+            path="/portfolio"
+            element={isMobile ? <MPortfolio /> : <Portfolio />}
+          />
+          <Route
+            path="/brand"
+            element={isMobile ? <MBrand /> : <Brand />}
+          />
+          <Route
+            path="/grandes-formatos"
+            element={isMobile ? <MPrint /> : <Print />}
+          />
+          <Route
+            path="/web"
+            element={isMobile ? <MWeb /> : <Web />}
+          />
+          <Route
+            path="/clientes"
+            element={isMobile ? <MClientes /> : <Clientes />}
+          />
+          <Route
+            path="/about"
+            element={isMobile ? <MAbout /> : <About />}
+          />
+          <Route
+            path="/contact"
+            element={isMobile ? <MContactAndPrefooter /> : <ContactAndPrefooter />}
+          />
+        </Routes>
+      </HashRouter >
+    </ScrollProvider >
   );
 }
 

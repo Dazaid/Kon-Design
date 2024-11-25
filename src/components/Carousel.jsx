@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { Box, IconButton, CircularProgress } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 // Función para intentar cargar la imagen con reintentos
 const loadImageWithRetry = (src, retries = 3, delay = 1000) => {
@@ -26,6 +28,7 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedImages, setLoadedImages] = useState([]); // Para almacenar las imágenes cargadas
   const [failedImages, setFailedImages] = useState([]); // Para almacenar las imágenes que fallaron al cargar
+  const sliderRef = useRef(null); // Referencia al carrusel
 
   // Configuración de react-slick
   const settings = {
@@ -34,7 +37,7 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: false, // Ocultar flechas por defecto
   };
 
   // Alternar modo de pantalla completa
@@ -67,16 +70,56 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
 
   return (
     <>
-      <Box>
-        <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50" : "relative"} flex items-center justify-center`}>
-          <Box className="w-full max-w-4xl">
+      <Box className="w-[100%]">
+        <Box
+          className={`${
+            isFullscreen
+              ? "fixed inset-0 bg-black z-50 w-[100vw] h-[100vh]"
+              : "relative bg-transparent"
+          } flex items-center bg-transparent w-[100%] justify-center transform transition duration-300 ease-in-out`}
+        >
+          <Box className="w-[100%] max-w-xl">
             {isFullscreen && (
-              <IconButton
-                className="absolute top-4 right-4 text-white bg-gray-700 hover:bg-gray-600"
-                onClick={toggleFullscreen}
-              >
-                <CloseIcon />
-              </IconButton>
+              <>
+                {/* Botón para cerrar fullscreen */}
+                <IconButton
+                    sx={{ color: "#fff",
+                      "&:hover": {
+                        color: "#fbba07",
+                      },
+                     }}
+                  className="relative bottom-[21rem] left-[45rem] scale-150 hover:scale-[1.6] bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.15)] z-[60] transform transition duration-300 ease-in-out"
+                  onClick={toggleFullscreen}
+                >
+                  <CloseIcon />
+                </IconButton>
+
+                {/* Botón para ir a la imagen anterior */}
+                <IconButton
+                  sx={{ color: "#fff",
+                    "&:hover": {
+                      color: "#fbba07",
+                    },
+                   }}
+                  className="relative scale-150 hover:scale-[1.6] right-[12rem] scale-150 top-[50%] bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.15)] z-[60] transform transition duration-300 ease-in-out"
+                  onClick={() => sliderRef.current.slickPrev()}
+                >
+                  <ArrowBackIcon />
+                </IconButton>
+
+                {/* Botón para ir a la imagen siguiente */}
+                <IconButton
+                   sx={{ color: "#fff",
+                    "&:hover": {
+                      color: "#fbba07",
+                    },
+                   }}
+                  className="relative left-[38rem] top-[50%] scale-150 hover:scale-[1.6] bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.15)] z-[60] transform transition duration-300 ease-in-out"
+                  onClick={() => sliderRef.current.slickNext()}
+                >
+                  <ArrowForwardIcon />
+                </IconButton>
+              </>
             )}
 
             {/* Mostrar un loader mientras las imágenes están cargando */}
@@ -85,14 +128,27 @@ const Carousel = ({ images, labelup = "", labeldown = "" }) => {
                 <CircularProgress color="primary" /> {/* Indicador de carga */}
               </Box>
             ) : (
-              <Box className={`${isFullscreen ? "fixed inset-0 bg-black z-50" : "relative"} flex items-center justify-center`}>
+              <Box
+                className={`${
+                  isFullscreen
+                    ? "fixed inset-0 bg-black z-50 w-[100vw] h-[100vh] scale-[1.7]"
+                    : "relative bg-transparent"
+                } flex items-center justify-center transform transition duration-300 ease-in-out`}
+              >
                 <Box className="w-full max-w-[400px] aspect-square">
-                  <Slider {...settings}>
+                  <Slider ref={sliderRef} {...settings}>
                     {images.map((image, index) => (
-                      <Box key={index} className="flex justify-center items-center">
+                      <Box
+                        key={index}
+                        className="flex justify-center items-center"
+                      >
                         <Box className="relative w-full max-w-[400px] aspect-square overflow-hidden">
                           <img
-                            src={loadedImages.includes(image) ? image : "/fallback-image.jpg"} // Usar imagen de fallback si falló
+                            src={
+                              loadedImages.includes(image)
+                                ? image
+                                : "/fallback-image.jpg"
+                            } // Usar imagen de fallback si falló
                             alt={`Slide ${index + 1}`}
                             className={`rounded-lg object-cover w-full h-full`}
                             onClick={toggleFullscreen}
