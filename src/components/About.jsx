@@ -1,9 +1,16 @@
 import { Box } from "@mui/material";
 import { useScroll } from "../ScrollContext";
+import { useLocation, useEffect } from 'react';
 const About = () => {
 
   const { contactRef } = useScroll();
-
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/sobre-nos"
+  useEffect(() => {
+    // Si la ruta es "/sobre-nos", hacemos el scroll suave hasta la parte superior de la sección de contacto
+    if (window.location.pathname === "/sobre-nos" && contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
   return (
     <>
       <Box ref={contactRef} className="flex flex-row gap-32 justify-center items-center bg-black w-[100vw] py-16">

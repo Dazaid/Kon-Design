@@ -1,10 +1,18 @@
 import { Box } from '@mui/material';
 import { useScroll } from "../ScrollContext";
+import { useLocation, useEffect } from 'react';
 const Footter = () => {
-  const { homeRef, servicosRef, portfolioRef, contactRef, scrollToSection } = useScroll()
+  const { homeRef, servicosRef, portfolioRef, contactRef, footterRef, scrollToSection } = useScroll()
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/contatenos"
+useEffect(() => {
+  // Si la ruta es "/contatenos", hacemos el scroll suave hasta la parte superior de la sección de footer
+  if (window.location.pathname === "/contatenos" && footterRef.current) {
+    footterRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}, []);  // Solo se ejecuta una vez al cargar el componente
   return (
     <>
-      <footer className='bg-black text-white'>
+      <footer ref={footterRef} className='bg-black text-white'>
         <Box className="bg-black py-6 w-[100vw] flex flex-col gap-6 justify-center items-center ">
           <img src="assets/Logo-KonDesign.webp" alt="Logo Footer" />
           <Box className="flex flex-row gap-6 text-2xl">

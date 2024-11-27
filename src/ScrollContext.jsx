@@ -9,6 +9,9 @@ export const ScrollProvider = ({ children }) => {
   const servicosRef = useRef(null);
   const portfolioRef = useRef(null);
   const contactRef = useRef(null);
+  const footterRef = useRef(null);
+  const printRef = useRef(null);
+  const socialRef = useRef(null);
 
   // Función para hacer scroll hacia una referencia
   const scrollToSection = (ref) => {
@@ -19,7 +22,7 @@ export const ScrollProvider = ({ children }) => {
 
   return (
     <ScrollContext.Provider
-      value={{ homeRef, servicosRef, portfolioRef, contactRef, scrollToSection }}
+      value={{ homeRef, servicosRef, portfolioRef, contactRef, footterRef, printRef, socialRef, scrollToSection }}
     >
       {children}
     </ScrollContext.Provider>

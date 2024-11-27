@@ -1,6 +1,34 @@
 import { Box } from '@mui/material';
 import MCarousel from './MCarousel';
+import { useScroll } from "../ScrollContext";
+import { useLocation, useEffect } from 'react';
+
 const MPrint = () => {
+
+  const { printRef } = useScroll();
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/grandes-formatos"
+  useEffect(() => {
+    // Si la ruta es "/grandes-formatos", hacemos el scroll suave hasta la parte superior de la sección de print
+    if (window.location.pathname === "/grandes-formatos" && printRef.current) {
+      printRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/decoracao-de-montra"
+  useEffect(() => {
+    // Si la ruta es "/decoracao-de-montra", hacemos el scroll suave hasta la parte superior de la sección de print
+    if (window.location.pathname === "/decoracao-de-montra" && printRef.current) {
+      printRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/letras-en-relieve"
+  useEffect(() => {
+    // Si la ruta es "/letras-en-relieve", hacemos el scroll suave hasta la parte superior de la sección de print
+    if (window.location.pathname === "/letras-en-relieve" && printRef.current) {
+      printRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
 
   const AcaiConcept = [
     'assets/AcaiConcept/Slide1.jpg',
@@ -36,7 +64,7 @@ const MPrint = () => {
     'assets/Kantar2/Slide33.jpg',
   ];
 
- 
+
   // const MayconGerald = [
   //   'assets/MayconGerald/Slide34.jpg',
   //   'assets/MayconGerald/Slide35.jpg',
@@ -58,13 +86,13 @@ const MPrint = () => {
   const GF3 = [
     'assets/GrandesFormatos/sl3.jpg',
     'assets/GrandesFormatos/sl3.jpg',
-    'assets/GrandesFormatos/sl3.jpg',   
+    'assets/GrandesFormatos/sl3.jpg',
   ]
 
   const GF4 = [
     'assets/GrandesFormatos/sl4.jpg',
     'assets/GrandesFormatos/sl4.jpg',
-    'assets/GrandesFormatos/sl4.jpg',   
+    'assets/GrandesFormatos/sl4.jpg',
   ]
 
   const GF5 = [
@@ -87,14 +115,14 @@ const MPrint = () => {
 
   return (
     <>
-      <Box className="flex flex-col justify-center items-center bg-[#fff] w-[100vw] pt-16">
+      <Box ref={printRef} className="flex flex-col justify-center items-center bg-[#fff] w-[100vw] pt-16">
         <Box className="flex flex-col gap-5 text-center">
           <h3 className="text-5xl font-bold ">GRANDES FORMATOS</h3>
           <p className="text-xl w-[80vw]">
-          Confira todos os nossos projetos impressos,
-          como cartões de visita, montras, cavaletes, 
-          autocolantes em vinil e etc. Estamos à vossa 
-          disposição para auxiliar no que for preciso!
+            Confira todos os nossos projetos impressos,
+            como cartões de visita, montras, cavaletes,
+            autocolantes em vinil e etc. Estamos à vossa
+            disposição para auxiliar no que for preciso!
           </p>
         </Box>
         <Box className="flex flex-col gap-16 ml-2 scale-[0.68] my-[-50rem]">

@@ -20,22 +20,22 @@ const MHome = () => {
         <img className='absolute w-[95vw] h-[100vh]  opacity-80  object-cover z-[-1]' src="/assets/HomeBkg.png" alt="background" />
         <Box className="absolute top-4 left-0">
           {/* Botón para abrir/cerrar el menú */}
-          <a
-            href="#menu"
+          <button
+            href="#"
             onClick={toggleMenu}
             aria-label="Ir al menu"
-            className="p-2 ml-4 mb-4 text-white rounded focus:outline-none"
+            className="ml-4 mb-4 text-white rounded focus:outline-none"
           >
             {isMenuOpen ? <CloseIcon className="MuiButtonBase-root MuiIconButton-root"
               tabIndex="0"
               type="button"
               aria-labelledby="close-button-label" aria-label="Cerrar menu" sx={{ fontSize: 40 }} /> : <MenuIcon className="MuiButtonBase-root MuiIconButton-root" tabIndex="0" type="button" aria-labelledby="open-button-label" aria-label="Abrir menu" sx={{ fontSize: 40 }} />}
-          </a>
+          </button>
 
 
           {/* Menú desplegable */}
           {isMenuOpen && (
-            <Box className="flex flex-col justify-center items-center text-center w-full bg-black text-[#ffbb00] font-semibold text-2xl z-10">
+            <Box className="flex flex-col justify-center items-center text-center w-[95vw] bg-black text-[#ffbb00] font-semibold text-2xl z-10">
 
               <a
                 href="#home"

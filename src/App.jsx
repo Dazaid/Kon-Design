@@ -2,7 +2,7 @@ import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, HashRouter } from "react-router-dom"
+import { Routes, Route, useNavigate, HashRouter, Navigate   } from "react-router-dom"
 import { Box } from "@mui/material";
 import { ScrollProvider } from "./ScrollContext";
 
@@ -89,42 +89,19 @@ function App() {
           />
 
           {/* Rutas principales */}
-          <Route
-            path="/home"
-            element={isMobile ? <MHome /> : <Home />}
-          />
-          <Route
-            path="/feedback"
-            element={isMobile ? <MFeedback /> : <Feedback />}
-          />
-          <Route
-            path="/portfolio"
-            element={isMobile ? <MPortfolio /> : <Portfolio />}
-          />
-          <Route
-            path="/brand"
-            element={isMobile ? <MBrand /> : <Brand />}
-          />
-          <Route
-            path="/grandes-formatos"
-            element={isMobile ? <MPrint /> : <Print />}
-          />
-          <Route
-            path="/web"
-            element={isMobile ? <MWeb /> : <Web />}
-          />
-          <Route
-            path="/clientes"
-            element={isMobile ? <MClientes /> : <Clientes />}
-          />
-          <Route
-            path="/about"
-            element={isMobile ? <MAbout /> : <About />}
-          />
-          <Route
-            path="/contact"
-            element={isMobile ? <MContactAndPrefooter /> : <ContactAndPrefooter />}
-          />
+          <Route path="/home" element={isMobile ? <MHome /> : <Home />} />
+          <Route path="/portfolio" element={isMobile ? <MPortfolio /> : <Portfolio />} />
+          <Route path="/sobre-nos" element={isMobile ? <MAbout /> : <About />} />
+          <Route path="/grandes-formatos" element={isMobile ? <MPrint /> : <Print />} />
+          <Route path="/redes-sociais" element={isMobile ? <MPortfolio /> : <Portfolio />} />
+          <Route path="/contatenos" element={isMobile ? <MFootter /> : <Footter />} />
+
+          {/* Redirecciones de rutas no canónicas */}
+          <Route path="/decoracao-de-montra" element={<Navigate to="/portfolio" replace />} />
+          <Route path="/letras-en-relieve" element={<Navigate to="/grandes-formatos" replace />} />
+
+          {/* Ruta por defecto si el usuario navega a una no definida */}
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </HashRouter >
     </ScrollProvider >

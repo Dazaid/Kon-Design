@@ -1,8 +1,17 @@
 import { Box } from "@mui/material";
 import { useScroll } from "../ScrollContext";
+import { useLocation, useEffect } from 'react';
+
 const MAbout = () => {
 
   const { contactRef } = useScroll();
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/sobre-nos"
+  useEffect(() => {
+    // Si la ruta es "/sobre-nos", hacemos el scroll suave hasta la parte superior de la sección de contacto
+    if (window.location.pathname === "/sobre-nos" && contactRef.current) {
+      contactRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
 
   return (
     <>
@@ -38,12 +47,12 @@ const MAbout = () => {
       </Box>
 
       <Box className="flex flex-col justify-center items-start bg-black pl-10 w-[100vw] pb-16">
-          <h3 className="text-4xl font-bold text-white">
-            EQUIPE <br />
-            QUE FAZ <br />
-            AKONTECER
-          </h3>
-          <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[14rem] h-[1.5vh] mt-2"></Box>
+        <h3 className="text-4xl font-bold text-white">
+          EQUIPE <br />
+          QUE FAZ <br />
+          AKONTECER
+        </h3>
+        <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[14rem] h-[1.5vh] mt-2"></Box>
       </Box>
 
       <Box className="flex flex-col gap-10 justify-center text-white items-start bg-black w-[100vw] pb-20 pl-10">

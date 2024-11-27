@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import { useScroll } from "../ScrollContext";
 import MCarousel from './MCarousel';
+import { useLocation, useEffect } from 'react';
 
 const GraciosaConfeitaria = [
   'assets/GraciosaConfeitaria/Slide45.jpg',
@@ -49,25 +50,43 @@ const BarberShop = [
 
 const MPortfolio = () => {
 
-  const { servicosRef, portfolioRef } = useScroll();
+  const { servicosRef, portfolioRef, socialRef } = useScroll();
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/portfolio"
+  useEffect(() => {
+    // Si la ruta es "/portfolio", hacemos el scroll suave hasta la parte superior de la sección de portfolio
+    if (window.location.pathname === "/portfolio" && portfolioRef.current) {
+      portfolioRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
+
+
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/redes-sociais"
+  useEffect(() => {
+    // Si la ruta es "/redes-sociais", hacemos el scroll suave hasta la parte superior de la sección de social
+    if (window.location.pathname === "/redes-sociais" && socialRef.current) {
+      socialRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
+
 
   return (
     <>
       <Box ref={portfolioRef} className="flex justify-center items-center bg-[#0b0009] w-[100vw]">
         <Box className="flex flex-col gap-16 justify-center items-center w-[100vw] my-[-25rem] ml-2 scale-[0.68]">
-            <MCarousel images={GraciosaConfeitaria} labelup={"Graciosa Confeitaria"} labeldown={"Montra"} />
-            <MCarousel images={AcaiConcept} labelup={"Açaí Concept"} labeldown={"Montra"} />
-            <MCarousel images={Aromatic} labelup={"Aromatic"} labeldown={"Decoração de Montra"} />
-            <MCarousel images={QueijoCoalhoPortugal} labelup={"Queijo Coalho Portugal"} labeldown={"Banner Roll Up"} />
-            <MCarousel images={Kantar} labelup={"Kantar"} labeldown={"Vinil Auto Colante"} />
-            <MCarousel images={BarberShop} labelup={"Barber Shop"} labeldown={"Cavalete"} />
-          <a target="_blank"  className='text-[#0b0009] text-xl bg-white py-5 px-10 rounded-lg font-bold' href="https://wa.me/351913916397">SOLICITAR&nbsp;ORÇAMENTO</a>
+          <MCarousel images={GraciosaConfeitaria} labelup={"Graciosa Confeitaria"} labeldown={"Montra"} />
+          <MCarousel images={AcaiConcept} labelup={"Açaí Concept"} labeldown={"Montra"} />
+          <MCarousel images={Aromatic} labelup={"Aromatic"} labeldown={"Decoração de Montra"} />
+          <MCarousel images={QueijoCoalhoPortugal} labelup={"Queijo Coalho Portugal"} labeldown={"Banner Roll Up"} />
+          <MCarousel images={Kantar} labelup={"Kantar"} labeldown={"Vinil Auto Colante"} />
+          <MCarousel images={BarberShop} labelup={"Barber Shop"} labeldown={"Cavalete"} />
+          <a target="_blank" className='text-[#0b0009] text-xl bg-white py-5 px-10 rounded-lg font-bold' href="https://wa.me/351913916397">SOLICITAR&nbsp;ORÇAMENTO</a>
         </Box>
       </Box>
 
 
 
-      <Box className="text-white flex flex-col gap-7 justify-center text-center items-center text-2xl w-[100vw] konradialgradient3 py-16">
+      <Box ref={socialRef} className="text-white flex flex-col gap-7 justify-center text-center items-center text-2xl w-[100vw] konradialgradient3 py-16">
         <p>
           NOVIDADES <br />
           EXCLUSIVAS <br />
@@ -122,7 +141,7 @@ const MPortfolio = () => {
         <Box className="flex flex-col justify-center items-start">
           <TrendingFlatIcon aria-label="TrendingFlatIcon3" sx={{ fontSize: 50, color: '#7030a0' }} className='relative top-5 right-2' />
           <h2 className='text-4xl font-bold'>
-              WEB <strong>DESIGN</strong> 
+            WEB <strong>DESIGN</strong>
           </h2>
           <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[14.5rem] h-[0.65vh] mt-2"></Box>
           <h3 className='text-xl'>

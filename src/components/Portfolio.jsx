@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 import { useScroll } from "../ScrollContext";
 import Carousel from './Carousel';
+import { useLocation, useEffect } from 'react';
 
 const GraciosaConfeitaria = [
   'assets/GraciosaConfeitaria/Slide45.jpg',
@@ -49,7 +50,25 @@ const BarberShop = [
 
 const Portfolio = () => {
 
-  const { servicosRef, portfolioRef } = useScroll();
+  const { servicosRef, portfolioRef, socialRef } = useScroll();
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/portfolio"
+  useEffect(() => {
+    // Si la ruta es "/portfolio", hacemos el scroll suave hasta la parte superior de la sección de portfolio
+    if (window.location.pathname === "/portfolio" && portfolioRef.current) {
+      portfolioRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
+
+
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/redes-sociais"
+  useEffect(() => {
+    // Si la ruta es "/redes-sociais", hacemos el scroll suave hasta la parte superior de la sección de social
+    if (window.location.pathname === "/redes-sociais" && socialRef.current) {
+      socialRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componenteSolo se ejecuta una vez al cargar el componente
 
   return (
     <>
@@ -73,7 +92,7 @@ const Portfolio = () => {
 
 
 
-      <Box className="text-white flex flex-row gap-20 justify-center text-start items-center h-[16vh] w-[100vw] bg-gradient-to-r from-[#e1a901] from-0% via-[#020202] via-50% to-[#200b39] to-100%">
+      <Box ref={socialRef} className="text-white flex flex-row gap-20 justify-center text-start items-center h-[16vh] w-[100vw] bg-gradient-to-r from-[#e1a901] from-0% via-[#020202] via-50% to-[#200b39] to-100%">
         <p>
           NOVIDADES <br />
           EXCLUSIVAS <br />
@@ -128,7 +147,7 @@ const Portfolio = () => {
         <Box className="flex flex-col justify-center items-start">
           <TrendingFlatIcon sx={{ fontSize: 50, color: '#7030a0' }} className='relative top-5 right-2' />
           <h2 className='text-3xl font-bold'>
-              WEB <strong>DESIGN</strong> 
+            WEB <strong>DESIGN</strong>
           </h2>
           <Box className="mb-2 bg-gradient-to-r from-[#090310] from-10% via-[#6d2f95] via-50% to-[#fbba07] to-90% w-[7.5vw] h-[0.65vh] mt-2"></Box>
           <h3 className='text-md'>

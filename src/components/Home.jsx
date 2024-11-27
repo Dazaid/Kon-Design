@@ -1,8 +1,19 @@
 import { Box } from '@mui/material';
 import { useScroll } from "../ScrollContext";
+import { useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 const Home = () => {
 
-  const { homeRef, servicosRef, portfolioRef, contactRef, scrollToSection } = useScroll()
+  const { homeRef, servicosRef, portfolioRef, contactRef, scrollToSection } = useScroll();
+  const location = useLocation();
+
+  // Usamos un useEffect para hacer scroll suave cuando la ruta sea "/home"
+  useEffect(() => {
+    // Si la ruta es "/home", hacemos el scroll suave hasta la parte superior de la sección de Home
+    if (window.location.pathname === "/home" && homeRef.current) {
+      homeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
 
   return (
     <>
