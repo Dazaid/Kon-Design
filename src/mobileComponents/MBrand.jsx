@@ -33,7 +33,7 @@ const MBrand = () => {
             no que for preciso!
           </p>
         </Box>
-        <Box className="flex flex-col gap-16 ml-2 scale-[0.68] my-[-10rem]">
+        <Box className="flex flex-col gap-16 mr-4 scale-[0.68] my-[-10rem]">
           <MCarousel images={Fusion} />
           <MCarousel images={BellaJardin} />
           <MCarousel images={JMC} />

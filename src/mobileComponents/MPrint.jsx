@@ -116,8 +116,8 @@ const MPrint = () => {
   return (
     <>
       <Box ref={printRef} className="flex flex-col justify-center items-center bg-[#fff] w-[100vw] pt-16">
-        <Box className="flex flex-col gap-5 text-center">
-          <h3 className="text-5xl font-bold ">GRANDES FORMATOS</h3>
+        <Box className="flex flex-col gap-5 text-center items-center justify-center">
+          <h3 className="text-5xl mr-4 font-bold ">GRANDES FORMATOS</h3>
           <p className="text-xl w-[80vw]">
             Confira todos os nossos projetos impressos,
             como cartões de visita, montras, cavaletes,
@@ -125,7 +125,7 @@ const MPrint = () => {
             disposição para auxiliar no que for preciso!
           </p>
         </Box>
-        <Box className="flex flex-col gap-16 ml-2 scale-[0.68] my-[-50rem]">
+        <Box className="flex flex-col gap-16 mr-4 scale-[0.68] my-[-50rem]">
           <MCarousel images={AcaiConcept} />
           <MCarousel images={Automotive} />
           <MCarousel images={Vitalife} />
